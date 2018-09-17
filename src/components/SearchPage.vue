@@ -11,10 +11,19 @@
       label="What are you looking for?"
     >
     </v-autocomplete>
-    <v-icon>search</v-icon>
+    <v-btn
+      icon
+      color="primary"
+      :loading="loading">
+      <v-icon>
+        search
+      </v-icon>
+    </v-btn>
   </div>
 </template>
 <script>
+  import axios from 'axios'
+
   export default {
     name: 'SearchPage',
     components: {},
@@ -89,19 +98,14 @@
     },
     watch: {
       search (val) {
-        val && val !== this.select && this.querySelections(val)
+        // val && val !== this.select && this.querySelections(val)
+        val && this.querySelections(val)
       }
     },
     methods: {
-      querySelections (v) {
+      async querySelections (val) {
         this.loading = true
-        // Simulated ajax query
-        setTimeout(() => {
-          this.items = this.states.filter(e => {
-            return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
-          })
-          this.loading = false
-        }, 500)
+        let result = await axios.get(`localhost:5000/search/${val}`)
       }
     }
   }
