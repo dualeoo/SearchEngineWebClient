@@ -35,12 +35,6 @@
           align-center
         >
           <v-flex text-xs-center>
-            <v-tooltip left>
-              <v-btn icon large :href="source" target="_blank" slot="activator">
-                <v-icon large>code</v-icon>
-              </v-btn>
-              <span>Source</span>
-            </v-tooltip>
             <router-view/>
           </v-flex>
         </v-layout>
