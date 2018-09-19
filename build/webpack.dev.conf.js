@@ -12,6 +12,8 @@ const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
+console.info(`HOST = ${HOST}`)
+console.info(`PORT = ${PORT}`)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
