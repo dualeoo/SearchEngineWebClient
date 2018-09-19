@@ -1,12 +1,11 @@
 <template>
-  <v-card>
-
-    <v-card-title primary-title>
-      <div>
-        <h3 class="headline mb-0">{{this.score}}}</h3>
-        <div>{{this.content}}</div>
-      </div>
+    <v-card hover>
+        <v-card-title>
+            <h3>{{this.score}}</h3>
     </v-card-title>
+        <v-card-text>
+            {{this.content}}
+        </v-card-text>
   </v-card>
 </template>
 

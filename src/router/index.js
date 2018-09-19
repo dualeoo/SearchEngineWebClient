@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import SearchPage from '@/components/SearchPage'
+import SearchPage from '@/components/Search'
 import ResultPage from '@/components/ResultPage'
 
 Vue.use(Router)

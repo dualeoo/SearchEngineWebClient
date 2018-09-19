@@ -1,26 +1,17 @@
 <template>
   <div>
     <v-autocomplete
-      :loading="loading"
-      :items="items"
-      :search-input.sync="search"
-      v-model="select"
-      cache-items
-      hide-no-data
-      hide-details
-      label="What are you looking for?"
+            :loading="loading"
+            :items="items"
+            :search-input.sync="search"
+            v-model="select"
+            cache-items
+            hide-no-data
+            hide-details
+            label="What are you looking for?"
+            @keyup.enter="queryApi"
     >
     </v-autocomplete>
-    <v-btn
-      icon
-      color="primary"
-      :loading="loading"
-      @click="queryApi"
-    >
-      <v-icon>
-        search
-      </v-icon>
-    </v-btn>
   </div>
 </template>
 <script>
