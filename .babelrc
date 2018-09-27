@@ -24,7 +24,8 @@
       "plugins": [
         "transform-vue-jsx",
         "transform-es2015-modules-commonjs",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "transform-runtime"
       ]
     },
     "development": {
@@ -49,6 +50,9 @@
           }
         ],
         "stage-2"
+      ],
+      "plugins": [
+        "transform-runtime"
       ]
     }
   }
