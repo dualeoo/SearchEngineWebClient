@@ -49,7 +49,7 @@
                 this.loading = true
                 this.results = null
                 try {
-                    let result = await axios.get(`http://35.240.183.87:5000/search/${this.query}`)
+                    let result = await axios.get(`http://35.240.183.87:5000/v1/search/${this.query}`)
                     if (result.status !== 200) {
                         console.warn(`Something wrong happens! Axios result status is not 200.\n${result}`)
                         return
