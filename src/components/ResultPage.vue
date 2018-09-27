@@ -5,9 +5,17 @@
         </div>
         <div v-if="!loading">
             <h1>Search result for <em><q>{{this.query}}</q></em></h1>
-            <Result v-for="(result , index) in results" :key="index" :score="result[1]" :content="result[0]">
-
-            </Result>
+            <template v-if="results">
+                <Result v-for="(result , index) in results" :key="index" :score="result[1]"
+                        :content="result[0]"></Result>
+            </template>
+            <template v-else>
+                <v-card hover>
+                    <v-card-title>
+                        <h3>Sorry but there is no documents containing the query</h3>
+                    </v-card-title>
+                </v-card>
+            </template>
         </div>
         <SearchPage></SearchPage>
     </div>
@@ -46,7 +54,12 @@
                         console.warn(`Something wrong happens! Axios result status is not 200.\n${result}`)
                         return
                     }
-                    this.results = result.data
+                    let results = result.data
+                    if (results.length === 0) {
+                        this.results = null
+                    } else {
+                        this.results = results
+                    }
                 } catch (e) {
                     console.error(e)
                 } finally {
