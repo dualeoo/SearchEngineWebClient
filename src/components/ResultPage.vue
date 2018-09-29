@@ -6,8 +6,8 @@
         <div v-if="!loading">
             <h1>Search result for <em><q>{{this.query}}</q></em></h1>
             <template v-if="results">
-                <Result v-for="(result , index) in results" :key="index" :score="result[1]"
-                        :content="result[0]"></Result>
+                <Result v-for="(result , index) in results" :key="index" :score="result.score"
+                        :content="result.article"></Result>
             </template>
             <template v-else>
                 <v-card hover>
@@ -49,7 +49,7 @@
                 this.loading = true
                 this.results = null
                 try {
-                    let result = await axios.get(`http://35.240.183.87:5000/v1/search/${this.query}`)
+                    let result = await axios.get(`api/v1/search/${this.query}`)
                     if (result.status !== 200) {
                         console.warn(`Something wrong happens! Axios result status is not 200.\n${result}`)
                         return
